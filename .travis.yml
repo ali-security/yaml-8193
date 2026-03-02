@@ -1,12 +1,14 @@
 language: go
 
 go:
-    - 1.4
-    - 1.5
-    - 1.6
-    - 1.7
-    - 1.8
-    - 1.9
-    - tip
-
+    - '1.8'
+    - '1.9'
+    - '1.10'
 go_import_path: gopkg.in/yaml.v2
+
+install:
+    - git clone https://github.com/rogpeppe/go-internal $GOPATH/src/github.com/rogpeppe/go-internal
+    - cd $GOPATH/src/github.com/rogpeppe/go-internal && git checkout v1.0.0
+    - git clone https://github.com/kr/pretty $GOPATH/src/github.com/kr/pretty
+    - cd $GOPATH/src/github.com/kr/pretty && git checkout v0.1.0
+    - go get -v -t -d ./...
